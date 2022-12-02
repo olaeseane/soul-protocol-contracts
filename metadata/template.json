@@ -1,0 +1,23 @@
+{
+  "image": "ipfs://QmfNRoW2Fc9RjHHd4YxDVFMyBsmFHTD6rHLcAovV1aN6jj/101/",
+  "attributes": [
+    {
+      "trait_type": "Familiarity",
+      "value": "online, zoom, buddy, colleague, friend, family, lover"
+    },
+    {
+      "trait_type": "Liking",
+      "value": "beloved, nice, funny, obscure, unpleasant, nasty, hated"
+    },
+    {
+      "trait_type": "Solidity",
+      "value": "trusted, solid, safe, unsafe, risky, critical"
+    },
+    { "trait_type": "Shining", "value": "shine, blaze, halo" },
+    {
+      "trait_type": "Rarity",
+      "value": "community, press, guild/DAO, business, partner, celebrity, state"
+    },
+    { "trait_type": "Age", "value": "age" }
+  ]
+}
