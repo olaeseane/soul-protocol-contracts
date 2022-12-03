@@ -148,7 +148,7 @@ contract SoulHubTest is Test {
         soulHub.mintToken{value: 0.001 ether}(holder2, traits);
 
         vm.prank(holder);
-        uint256[] memory tokens = soulHub.fetchOwnerTokens();
+        uint256[] memory tokens = soulHub.fetchOwnerTokens(holder);
         assertEq(tokens.length, 3);
         for (uint256 i; i < tokens.length; i++) {
             assertEq(tokens[i], i + 1);

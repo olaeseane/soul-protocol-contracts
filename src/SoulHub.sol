@@ -1,15 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-import "solmate/auth/Owned.sol";
 import "openzeppelin-contracts/utils/structs/EnumerableSet.sol";
 import "openzeppelin-contracts/utils/Base64.sol";
+import "solmate/auth/Owned.sol";
 
+import {WormholeNFT} from "./WormholeNFT.sol";
 import {ERC721} from "./ERC721.sol";
 
 // import {console} from "forge-std/console.sol";
 
-contract SoulHub is ERC721, Owned {
+contract SoulHub is WormholeNFT {
     error SentAmountNotEqualMintPrice();
     error TokensNotExist();
 
@@ -37,7 +38,7 @@ contract SoulHub is ERC721, Owned {
 
     mapping(string => mapping(string => string)) private _codes;
 
-    constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) Owned(msg.sender) {
+    constructor(string memory _name, string memory _symbol) WormholeNFT(_name, _symbol) {
         _codes["familiarity"]["online"] = "1";
         _codes["familiarity"]["zoom"] = "1";
         _codes["familiarity"]["buddy"] = "4";
@@ -195,12 +196,12 @@ contract SoulHub is ERC721, Owned {
         return senderTokenIds;
     }
 
-    function fetchOwnerTokens() public view returns (uint256[] memory) {
-        uint256 ownerTokenCount = _balanceOf[msg.sender].length();
+    function fetchOwnerTokens(address _owner) public view returns (uint256[] memory) {
+        uint256 ownerTokenCount = _balanceOf[_owner].length();
         uint256[] memory ownerTokenIds = new uint[](ownerTokenCount);
 
         for (uint256 i; i < ownerTokenCount; i++) {
-            ownerTokenIds[i] = _balanceOf[msg.sender].at(i);
+            ownerTokenIds[i] = _balanceOf[_owner].at(i);
         }
         return ownerTokenIds;
     }

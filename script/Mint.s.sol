@@ -6,14 +6,14 @@ import "../src/SoulHub.sol";
 
 contract SoulHubScript is Script {
     function run() external {
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY_2");
         vm.startBroadcast(deployerPrivateKey);
 
-        address addrSoulHub = 0xF1a366d16686Ca5dF7D86aa49b40dBeAc8a7409C;
+        address addrSoulHub = 0xd971A8147314118bc930cA88E729F1760e1a938b;
         SoulHub soulHub = SoulHub(addrSoulHub);
 
         SoulHub.Traits memory traits = SoulHub.Traits("colleague", "unpleasant", "unsafe", "blaze", "press");
-        soulHub.mintToken(0xE7Ca90149B323E6D9DB6ae68Cf9B97694c2B3Ab3, traits);
+        soulHub.mintToken(0x34C064b128237DB2B917962c45083Ef140564bD8, traits);
 
         vm.stopBroadcast();
     }
